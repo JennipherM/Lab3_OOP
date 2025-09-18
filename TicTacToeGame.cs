@@ -48,12 +48,15 @@ namespace TicTacToe
             }
         }
 
-        // Only checks for Horizontal wins
+
         public void checkForWin(int playerTurn)
         {
+            // only checks for horizontal / row wins
+            int matches;
+
             for (int row = 0; row < 3; row++)
             {
-                int matches = 0;
+                matches = 0;
 
                 for (int column = 1; column < 3; column++)
                 {
@@ -66,6 +69,32 @@ namespace TicTacToe
                         matches++;
                     }
                 }
+            }
+
+            // only checks for vertical / column wins
+            for (int column = 0; column < 3; column++)
+            {
+                matches = 0;
+
+                for (int row = 1; row < 3; row++)
+                {
+                    if (board[0, column] == '-')
+                    {
+                        continue;
+                    }
+                    else if (board[0, column] == board[row, column])
+                    {
+                        matches++;
+                    }
+                }
+
+
+
+
+
+
+                //runs if there is a win
+
                 if (matches == 2 && playerTurn == 1)
                 {
                     Console.WriteLine("Player 1 Wins");
